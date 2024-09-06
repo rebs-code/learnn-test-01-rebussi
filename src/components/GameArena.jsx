@@ -1,18 +1,21 @@
 //react imports
-import { useState, useEffect } from "react";
+import { useState } from "react";
 //components
 import GameModeSelector from "./GameModeSelector";
 import PlayerChoiceDisplay from "./PlayerChoiceDisplay";
-import Button from "./ui/Button";
 import ChoiceButtons from "./ChoiceButtons";
+import GameStatusMessage from "./GameStatusMessage";
+// ui
+import Button from "./ui/Button";
 //utils
 import { generatePCChoice } from "../lib/gameUtils";
 
 export default function GameArena() {
-  const [gameMode, setGameMode] = useState(null);
+  const [gameMode, setGameMode] = useState("humanVsPC"); //inizialmente la modalità di gioco è human vs pc
   const [player1Choice, setPlayer1Choice] = useState(null);
   const [player2Choice, setPlayer2Choice] = useState(null);
   const [currentPlayer, setCurrentPlayer] = useState(1); //inizialmente player01 è il giocatore che comincia, in human vs pc human è sempre player01
+  const [result, setResult] = useState("");
 
   // funzione che gestisce la selezione della modalità di gioco
   const handleModeSelect = (mode) => {
@@ -48,10 +51,32 @@ export default function GameArena() {
     );
   };
 
+  // relazioni tra le mosse
   const moveRelationships = {
     rock: { beats: ["scissors", "lizard"] },
     paper: { beats: ["rock", "spock"] },
     scissors: { beats: ["paper", "lizard"] },
+  };
+
+  // funzione che determina il vincitore
+  const determineWinner = (move1, move2) => {
+    if (move1 === move2) return "tie";
+    if (moveRelationships[move1].beats.includes(move2)) return "move1";
+    return "move2";
+  };
+
+  // funzione che inizia il gioco e lo risolve
+  const playGame = () => {
+    if (player1Choice && player2Choice) {
+      const gameResult = determineWinner(player1Choice, player2Choice);
+      if (gameResult === "move1") {
+        setResult("Player 1 wins!");
+      } else if (gameResult === "move2") {
+        setResult("Player 2 wins!");
+      } else {
+        setResult("It's a tie!");
+      }
+    }
   };
 
   return (
@@ -67,9 +92,19 @@ export default function GameArena() {
         disabled={isChoiceDisabled()}
         gameMode={gameMode}
       />
+      <GameStatusMessage
+        gameMode={gameMode}
+        currentPlayer={currentPlayer}
+        player1Choice={player1Choice}
+        player2Choice={player2Choice}
+      />
+
       <div className="flex justify-center mt-8">
-        <Button color="teal">Start Game</Button>
+        <Button onClick={playGame} color="teal">
+          Start Game
+        </Button>
       </div>
+      {result && <p className="text-center mt-4 text-xl font-bold">{result}</p>}
     </main>
   );
 }
