@@ -126,7 +126,11 @@ export default function GameArena() {
       />
 
       <div className="flex justify-center mt-8">
-        <Button onClick={gameEnded ? resetGame : playGame} color="teal">
+        <Button
+          onClick={gameEnded ? resetGame : playGame}
+          color="teal"
+          disabled={!player1Choice || !player2Choice}
+        >
           {gameEnded ? "Play Again" : "Start Game"}
         </Button>
       </div>
