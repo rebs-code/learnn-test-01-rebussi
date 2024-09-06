@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function Button({ onClick, disabled, children, color }) {
   return (
     <button
@@ -18,3 +20,10 @@ export default function Button({ onClick, disabled, children, color }) {
     </button>
   );
 }
+
+Button.propTypes = {
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+  children: PropTypes.node,
+  color: PropTypes.string,
+};
