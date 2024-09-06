@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 
 export default function GameModeSelector({ onSelectMode }) {
@@ -52,3 +53,7 @@ export default function GameModeSelector({ onSelectMode }) {
     </div>
   );
 }
+
+GameModeSelector.propTypes = {
+  onSelectMode: PropTypes.string.isRequired,
+};

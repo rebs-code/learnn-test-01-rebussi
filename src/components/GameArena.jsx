@@ -43,6 +43,12 @@ export default function GameArena() {
     );
   };
 
+  const moveRelationships = {
+    rock: { beats: ["scissors", "lizard"] },
+    paper: { beats: ["rock", "spock"] },
+    scissors: { beats: ["paper", "lizard"] },
+  };
+
   return (
     <main className="container mx-auto px-4 py-8">
       <GameModeSelector onSelectMode={handleModeSelect} />
