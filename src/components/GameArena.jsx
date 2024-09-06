@@ -68,7 +68,7 @@ export default function GameArena() {
         gameMode={gameMode}
       />
       <div className="flex justify-center mt-8">
-        <Button>Start Game</Button>
+        <Button color="teal">Start Game</Button>
       </div>
     </main>
   );

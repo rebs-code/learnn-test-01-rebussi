@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import Button from "./ui/Button";
 
 export default function ChoiceButtons({ onChoice, disabled, gameMode }) {
   const choices = ["rock", "paper", "scissors"];
@@ -7,12 +8,9 @@ export default function ChoiceButtons({ onChoice, disabled, gameMode }) {
   if (gameMode === "PCvsPC") {
     return (
       <div className="flex justify-center my-4">
-        <button
-          onClick={() => onChoice()}
-          className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors"
-        >
+        <Button onClick={() => onChoice()} color="amber">
           Generate PC Choices
-        </button>
+        </Button>
       </div>
     );
   }
