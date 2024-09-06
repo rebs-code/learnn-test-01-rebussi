@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function PlayerChoiceDisplay({
   player1Choice,
   player2Choice,
@@ -30,3 +32,9 @@ export default function PlayerChoiceDisplay({
     </div>
   );
 }
+
+PlayerChoiceDisplay.propTypes = {
+  player1Choice: PropTypes.string,
+  player2Choice: PropTypes.string,
+  gameMode: PropTypes.string,
+};
