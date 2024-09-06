@@ -62,7 +62,11 @@ export default function GameArena() {
         player2Choice={player2Choice}
         gameMode={gameMode}
       />
-      <ChoiceButtons onChoice={handleChoice} disabled={isChoiceDisabled()} />
+      <ChoiceButtons
+        onChoice={handleChoice}
+        disabled={isChoiceDisabled()}
+        gameMode={gameMode}
+      />
       <div className="flex justify-center mt-8">
         <Button>Start Game</Button>
       </div>
