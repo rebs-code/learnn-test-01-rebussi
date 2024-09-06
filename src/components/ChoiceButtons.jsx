@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function ChoiceButtons({ onChoice, disabled }) {
   const choices = ["rock", "paper", "scissors"];
 
@@ -16,3 +18,8 @@ export default function ChoiceButtons({ onChoice, disabled }) {
     </div>
   );
 }
+
+ChoiceButtons.propTypes = {
+  onChoice: PropTypes.func.isRequired,
+  disabled: PropTypes.bool.isRequired,
+};
