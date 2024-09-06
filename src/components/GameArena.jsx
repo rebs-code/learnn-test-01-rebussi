@@ -14,6 +14,7 @@ export default function GameArena() {
   const [gameMode, setGameMode] = useState("humanVsPC"); //inizialmente la modalità di gioco è human vs pc
   const [player1Choice, setPlayer1Choice] = useState(null);
   const [player2Choice, setPlayer2Choice] = useState(null);
+  const [pcChoiceGenerated, setPcChoiceGenerated] = useState(false);
   const [currentPlayer, setCurrentPlayer] = useState(1); //inizialmente player01 è il giocatore che comincia, in human vs pc human è sempre player01
   const [result, setResult] = useState("");
 
@@ -25,6 +26,7 @@ export default function GameArena() {
     setPlayer2Choice(null);
     setCurrentPlayer(1);
     setResult("");
+    setPcChoiceGenerated(false);
   };
 
   //funzione che gestisce la scelta del giocatore
@@ -34,11 +36,13 @@ export default function GameArena() {
       const pc2Choice = generatePCChoice();
       setPlayer1Choice(pc1Choice);
       setPlayer2Choice(pc2Choice);
+      setPcChoiceGenerated(true);
     } else if (gameMode === "humanVsPC") {
       if (!player1Choice) {
         setPlayer1Choice(choice);
       } else {
         setPlayer2Choice(generatePCChoice());
+        setPcChoiceGenerated(true);
       }
     } else if (gameMode === "humanVsHuman") {
       if (currentPlayer === 1) {
@@ -99,8 +103,8 @@ export default function GameArena() {
         onChoice={handleChoice}
         disabled={isChoiceDisabled()}
         gameMode={gameMode}
-        currentPlayer={currentPlayer}
         player1Choice={player1Choice}
+        pcChoiceGenerated={pcChoiceGenerated}
       />
       <GameStatusMessage
         gameMode={gameMode}
