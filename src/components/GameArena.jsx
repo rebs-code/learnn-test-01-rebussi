@@ -17,16 +17,13 @@ export default function GameArena() {
   const [pcChoiceGenerated, setPcChoiceGenerated] = useState(false);
   const [currentPlayer, setCurrentPlayer] = useState(1); //inizialmente player01 è il giocatore che comincia, in human vs pc human è sempre player01
   const [result, setResult] = useState("");
+  const [gameEnded, setGameEnded] = useState(false);
 
   // funzione che gestisce la selezione della modalità di gioco
   const handleModeSelect = (mode) => {
     setGameMode(mode);
     //quando si cambia modalità di gioco, si resetta il gioco
-    setPlayer1Choice(null);
-    setPlayer2Choice(null);
-    setCurrentPlayer(1);
-    setResult("");
-    setPcChoiceGenerated(false);
+    resetGame();
   };
 
   //funzione che gestisce la scelta del giocatore
@@ -59,7 +56,8 @@ export default function GameArena() {
     return (
       gameMode === "PCvsPC" ||
       (gameMode === "humanVsPC" && player1Choice) ||
-      (gameMode === "humanVsHuman" && player1Choice && player2Choice)
+      (gameMode === "humanVsHuman" && player1Choice && player2Choice) ||
+      gameEnded
     );
   };
 
@@ -88,7 +86,18 @@ export default function GameArena() {
       } else {
         setResult("It's a tie!");
       }
+      setGameEnded(true);
     }
+  };
+
+  const resetGame = () => {
+    setGameMode("humanVsPC");
+    setPlayer1Choice(null);
+    setPlayer2Choice(null);
+    setCurrentPlayer(1);
+    setResult("");
+    setPcChoiceGenerated(false);
+    setGameEnded(false);
   };
 
   return (
@@ -113,8 +122,8 @@ export default function GameArena() {
       />
 
       <div className="flex justify-center mt-8">
-        <Button onClick={playGame} color="teal">
-          Start Game
+        <Button onClick={gameEnded ? resetGame : playGame} color="teal">
+          {gameEnded ? "Play Again" : "Start Game"}
         </Button>
       </div>
       {result && <p className="text-center mt-4 text-xl font-bold">{result}</p>}
