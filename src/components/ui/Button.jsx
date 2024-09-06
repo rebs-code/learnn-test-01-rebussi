@@ -6,7 +6,7 @@ export default function Button({ onClick, disabled, children, color }) {
       onClick={onClick}
       disabled={disabled}
       className={`
-        px-6 py-3 text-lg font-semibold rounded-lg shadow-md
+        px-6 py-3 text-lg font-semibold rounded-lg shadow-md capitalize
         transition-colors duration-300 ease-in-out
         ${
           disabled
