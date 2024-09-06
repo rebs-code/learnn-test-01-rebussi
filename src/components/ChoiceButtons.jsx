@@ -10,7 +10,10 @@ export default function ChoiceButtons({
 }) {
   const choices = ["rock", "paper", "scissors"];
 
-  if (gameMode === "PCvsPC" || (gameMode === "humanVsPC" && player1Choice)) {
+  if (
+    gameMode === "PCvsPC" ||
+    (gameMode === "humanVsPC" && player1Choice && !pcChoiceGenerated)
+  ) {
     return (
       <div className="flex justify-center my-4">
         <Button

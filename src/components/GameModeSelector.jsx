@@ -1,12 +1,8 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
 
-export default function GameModeSelector({ onSelectMode }) {
-  const [selectedMode, setSelectedMode] = useState("humanVsPC");
-
+export default function GameModeSelector({ currentMode, onSelectMode }) {
   const handleModeChange = (event) => {
     const mode = event.target.value;
-    setSelectedMode(mode);
     onSelectMode(mode);
   };
 
@@ -21,7 +17,7 @@ export default function GameModeSelector({ onSelectMode }) {
             type="radio"
             name="gameMode"
             value="humanVsHuman"
-            checked={selectedMode === "humanVsHuman"}
+            checked={currentMode === "humanVsHuman"}
             onChange={handleModeChange}
             className="w-4 h-4"
           />
@@ -32,7 +28,7 @@ export default function GameModeSelector({ onSelectMode }) {
             type="radio"
             name="gameMode"
             value="humanVsPC"
-            checked={selectedMode === "humanVsPC"}
+            checked={currentMode === "humanVsPC"}
             onChange={handleModeChange}
             className="w-4 h-4"
           />
@@ -43,7 +39,7 @@ export default function GameModeSelector({ onSelectMode }) {
             type="radio"
             name="gameMode"
             value="PCvsPC"
-            checked={selectedMode === "PCvsPC"}
+            checked={currentMode === "PCvsPC"}
             onChange={handleModeChange}
             className="w-4 h-4"
           />
@@ -56,4 +52,5 @@ export default function GameModeSelector({ onSelectMode }) {
 
 GameModeSelector.propTypes = {
   onSelectMode: PropTypes.string.isRequired,
+  currentMode: PropTypes.string.isRequired,
 };

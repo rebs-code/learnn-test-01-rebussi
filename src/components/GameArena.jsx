@@ -54,10 +54,10 @@ export default function GameArena() {
   //funzione che controlla se la scelta è disabilitata
   const isChoiceDisabled = () => {
     return (
-      gameMode === "PCvsPC" ||
-      (gameMode === "humanVsPC" && player1Choice) ||
-      (gameMode === "humanVsHuman" && player1Choice && player2Choice) ||
-      gameEnded
+      gameEnded ||
+      (gameMode === "PCvsPC" && pcChoiceGenerated) ||
+      (gameMode === "humanVsPC" && player1Choice && pcChoiceGenerated) ||
+      (gameMode === "humanVsHuman" && player1Choice && player2Choice)
     );
   };
 
@@ -91,7 +91,6 @@ export default function GameArena() {
   };
 
   const resetGame = () => {
-    setGameMode("humanVsPC");
     setPlayer1Choice(null);
     setPlayer2Choice(null);
     setCurrentPlayer(1);
@@ -102,7 +101,10 @@ export default function GameArena() {
 
   return (
     <main className="container mx-auto px-4 py-8">
-      <GameModeSelector onSelectMode={handleModeSelect} />
+      <GameModeSelector
+        currentMode={gameMode}
+        onSelectMode={handleModeSelect}
+      />
       <PlayerChoiceDisplay
         player1Choice={player1Choice}
         player2Choice={player2Choice}
@@ -112,7 +114,9 @@ export default function GameArena() {
         onChoice={handleChoice}
         disabled={isChoiceDisabled()}
         gameMode={gameMode}
+        currentPlayer={currentPlayer}
         player1Choice={player1Choice}
+        player2Choice={player2Choice}
         pcChoiceGenerated={pcChoiceGenerated}
       />
       <GameStatusMessage
