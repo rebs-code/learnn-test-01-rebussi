@@ -1,8 +1,12 @@
+//react imports
 import { useState, useEffect } from "react";
+//components
 import GameModeSelector from "./GameModeSelector";
 import PlayerChoiceDisplay from "./PlayerChoiceDisplay";
 import Button from "./ui/Button";
 import ChoiceButtons from "./ChoiceButtons";
+//utils
+import { generatePCChoice } from "../lib/gameUtils";
 
 export default function GameArena() {
   const [gameMode, setGameMode] = useState(null);
@@ -17,18 +21,19 @@ export default function GameArena() {
     setPlayer2Choice(null);
   };
 
-  // funziona che gestisce la scelta del giocatore o dei giocatori
+  //funzione che gestisce la scelta del giocatore
   const handleChoice = (choice) => {
-    if (currentPlayer === 1) {
+    if (gameMode === "PCvsPC") {
+      const pc1Choice = generatePCChoice();
+      const pc2Choice = generatePCChoice();
+      setPlayer1Choice(pc1Choice);
+      setPlayer2Choice(pc2Choice);
+    } else if (currentPlayer === 1) {
       setPlayer1Choice(choice);
       if (gameMode === "humanVsHuman") {
         setCurrentPlayer(2);
-      } else {
-        // simula la scelta del pc
-        const pcChoice = ["rock", "paper", "scissors"][
-          Math.floor(Math.random() * 3)
-        ];
-        setPlayer2Choice(pcChoice);
+      } else if (gameMode === "humanVsPC") {
+        setPlayer2Choice(generatePCChoice());
       }
     } else {
       setPlayer2Choice(choice);
