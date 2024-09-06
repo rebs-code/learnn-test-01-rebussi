@@ -20,8 +20,11 @@ export default function GameArena() {
   // funzione che gestisce la selezione della modalità di gioco
   const handleModeSelect = (mode) => {
     setGameMode(mode);
+    //quando si cambia modalità di gioco, si resetta il gioco
     setPlayer1Choice(null);
     setPlayer2Choice(null);
+    setCurrentPlayer(1);
+    setResult("");
   };
 
   //funzione che gestisce la scelta del giocatore
@@ -31,23 +34,28 @@ export default function GameArena() {
       const pc2Choice = generatePCChoice();
       setPlayer1Choice(pc1Choice);
       setPlayer2Choice(pc2Choice);
-    } else if (currentPlayer === 1) {
-      setPlayer1Choice(choice);
-      if (gameMode === "humanVsHuman") {
-        setCurrentPlayer(2);
-      } else if (gameMode === "humanVsPC") {
+    } else if (gameMode === "humanVsPC") {
+      if (!player1Choice) {
+        setPlayer1Choice(choice);
+      } else {
         setPlayer2Choice(generatePCChoice());
       }
-    } else {
-      setPlayer2Choice(choice);
+    } else if (gameMode === "humanVsHuman") {
+      if (currentPlayer === 1) {
+        setPlayer1Choice(choice);
+        setCurrentPlayer(2);
+      } else {
+        setPlayer2Choice(choice);
+      }
     }
   };
 
+  //funzione che controlla se la scelta è disabilitata
   const isChoiceDisabled = () => {
     return (
       gameMode === "PCvsPC" ||
-      (gameMode === "humanVsPC" && currentPlayer === 2) ||
-      (player1Choice && player2Choice)
+      (gameMode === "humanVsPC" && player1Choice) ||
+      (gameMode === "humanVsHuman" && player1Choice && player2Choice)
     );
   };
 
@@ -91,10 +99,11 @@ export default function GameArena() {
         onChoice={handleChoice}
         disabled={isChoiceDisabled()}
         gameMode={gameMode}
+        currentPlayer={currentPlayer}
+        player1Choice={player1Choice}
       />
       <GameStatusMessage
         gameMode={gameMode}
-        currentPlayer={currentPlayer}
         player1Choice={player1Choice}
         player2Choice={player2Choice}
       />

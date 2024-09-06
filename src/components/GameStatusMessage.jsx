@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 
 export default function GameStatusMessage({
   gameMode,
-  currentPlayer,
   player1Choice,
   player2Choice,
 }) {

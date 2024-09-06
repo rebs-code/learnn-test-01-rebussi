@@ -1,21 +1,25 @@
 import PropTypes from "prop-types";
 import Button from "./ui/Button";
 
-export default function ChoiceButtons({ onChoice, disabled, gameMode }) {
+export default function ChoiceButtons({
+  onChoice,
+  disabled,
+  gameMode,
+  currentPlayer,
+  player1Choice,
+}) {
   const choices = ["rock", "paper", "scissors"];
 
-  // se la gameMode è PCvsPC, mostra un pulsante per generare le scelte del PC
-  if (gameMode === "PCvsPC") {
+  if (gameMode === "PCvsPC" || (gameMode === "humanVsPC" && player1Choice)) {
     return (
       <div className="flex justify-center my-4">
         <Button onClick={() => onChoice()} color="amber">
-          Generate PC Choices
+          Generate PC Choice{gameMode === "PCvsPC" ? "s" : ""}
         </Button>
       </div>
     );
   }
 
-  // se la gameMode è humanVsPC o humanVsHuman, mostra i pulsanti per le scelte del giocatore
   return (
     <div className="flex justify-center gap-4 my-4">
       {choices.map((choice) => (
@@ -36,4 +40,6 @@ ChoiceButtons.propTypes = {
   onChoice: PropTypes.func.isRequired,
   disabled: PropTypes.bool.isRequired,
   gameMode: PropTypes.string.isRequired,
+  currentPlayer: PropTypes.number.isRequired,
+  player1Choice: PropTypes.string,
 };
