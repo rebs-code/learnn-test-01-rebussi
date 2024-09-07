@@ -6,7 +6,7 @@ Data: 04 Settembre 2024
 
 ## CODING PROBLEMS
 
-### Coding Problem 01 - FOOBAR
+## Coding Problem 01 - FOOBAR
 
 Scrivi un piccolo programma che stampi ogni numero da 1 a 100 su una nuova riga.
 Per ogni multiplo di 3, stampa “Foo” invece del numero.
@@ -69,17 +69,17 @@ else {
 
 Se il numero non è multiplo né di 3 né di 5, viene stampato il numero stesso.
 
-### Coding Problem 02 - Carta, forbice e sasso
+## Coding Problem 02 - Carta, forbice e sasso
 
 Sono un assiduo giocatore, per questo voglio giocare a “carta forbice e sasso”.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 Posso giocare Umano vs Computer?
 Posso giocare Computer vs Computer?
 Posso giocare una nuova partita conclusa quella precedente?
 
-#### User Story Back - Technical Constraints
+### User Story Back - Technical Constraints
 
 Non è necessaria una GUI appariscente (può essere semplice)
 Non dovrebbero essere necessarie librerie o moduli esterni se non per i test
@@ -87,14 +87,16 @@ Usa le pratiche riconosciute nell’industry dello sviluppo software
 Considera di scrivere codice estendibile. Se lo farai dovrebbe essere relativamente semplice estendere il gioco alla variante Rock, paper, scissors, lizard and Spock
 Questo è un Minimum Viable Product: eleganza e semplicità battono una ricca lista di feature
 
-#### Soluzione
+### Soluzione
 
 La soluzione presentata tiene conto delle caretteristiche principale di un MVP per giocare a Carta, Forbice e Sasso:
 
 - L'intera tavola di gioco e' presentata all'utente fin da subito cosi che appaiono evidenti le feature e le caratteristiche.
 - Il design viene rispettato come leggero, miminale, e chiaro. Questo per evitare di aggiungere features indesiderate e permettere all'utente di concentrarsi sulle funzionalita' del prodotto finale
 
-##### Utilizzo
+![alt text](image.png)
+
+#### Utilizzo
 
 L'utente puo' giocare semplicemente scegliendo una delle tre modalita' proposte:
 
@@ -104,7 +106,7 @@ L'utente puo' giocare semplicemente scegliendo una delle tre modalita' proposte:
 
 Dopo aver effettuato questa prima scelta - di default la modalita' selezionata e' Human vs PC - l'utente puo' procedere con le scelte di tiro tramite bottoni. La partita inizia premendo un pulsante sullo schermo che a fine partita permette anche di ricominciare con un nuovo round.
 
-##### Struttura del Progetto
+#### Struttura del Progetto
 
 - Main Container
 
@@ -130,13 +132,13 @@ Questo componente e' fondamentale per l'esperienza utente perche' tiene traccia 
 
 Come dice il nome, avvia la partita. E' disattivato fino a quando entrambi i giocatori non abbiano effettuato una scelta. A partita terminata, invita l'utente a giocarne un'altra e resetta lo stato di gioco.
 
-##### Tecnologie Utilizzate
+#### Tecnologie Utilizzate
 
 - Vite ^5.4.1
 - React 18
 - Tailwind ^3.4.10
 
-##### Estensibilita'
+#### Estensibilita'
 
 Il progetto è stato progettato pensando all'estensibilità. In particolare, è predisposto per una facile implementazione della variante "Rock, Paper, Scissors, Lizard, Spock". Le funziona di relazione fra le mosse e di determinazione del vincitore permettono di integrare diverse modalita' con facilita':
 
@@ -156,7 +158,7 @@ Il progetto è stato progettato pensando all'estensibilità. In particolare, è 
   };
 ```
 
-##### Installazione
+#### Installazione
 
 1- Clonare la repo da GitHub
 
