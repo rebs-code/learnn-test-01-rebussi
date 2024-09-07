@@ -5,6 +5,7 @@ import GameModeSelector from "./GameModeSelector";
 import PlayerChoiceDisplay from "./PlayerChoiceDisplay";
 import ChoiceButtons from "./ChoiceButtons";
 import GameStatusMessage from "./GameStatusMessage";
+import ResultDisplay from "./ResultDisplay";
 // ui
 import Button from "./ui/Button";
 //utils
@@ -119,13 +120,16 @@ export default function GameArena() {
         player2Choice={player2Choice}
         pcChoiceGenerated={pcChoiceGenerated}
       />
-      <GameStatusMessage
-        gameMode={gameMode}
-        player1Choice={player1Choice}
-        player2Choice={player2Choice}
-      />
-
-      <div className="flex justify-center mt-8">
+      {gameEnded ? (
+        <ResultDisplay result={result} />
+      ) : (
+        <GameStatusMessage
+          gameMode={gameMode}
+          player1Choice={player1Choice}
+          player2Choice={player2Choice}
+        />
+      )}
+      <div className="flex justify-center mt-4">
         <Button
           onClick={gameEnded ? resetGame : playGame}
           color="teal"
@@ -134,7 +138,6 @@ export default function GameArena() {
           {gameEnded ? "Play Again" : "Start Game"}
         </Button>
       </div>
-      {result && <p className="mt-4 text-xl font-bold text-center">{result}</p>}
     </main>
   );
 }
