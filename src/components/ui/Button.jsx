@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 export default function Button({ onClick, disabled, children, color }) {
+  //set di colori disponibili
   const colorClasses = {
     teal: "bg-teal-500 hover:bg-teal-700 active:bg-teal-800",
     amber: "bg-amber-500 hover:bg-amber-700 active:bg-amber-800",

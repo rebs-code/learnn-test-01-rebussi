@@ -8,8 +8,10 @@ export default function ChoiceButtons({
   player1Choice,
   pcChoiceGenerated,
 }) {
+  //set di scelte disponibili
   const choices = ["rock", "paper", "scissors"];
 
+  //se la modalità di gioco è PC vs PC o human vs PC e il giocatore ha già scelto, si mostra il pulsante per generare la scelta del PC
   if (gameMode === "PCvsPC" || (gameMode === "humanVsPC" && player1Choice)) {
     return (
       <div className="flex justify-center my-4">
@@ -26,6 +28,7 @@ export default function ChoiceButtons({
 
   return (
     <div className="flex gap-4 justify-center my-4">
+      {/* si crea un pulsante per ogni scelta disponibile */}
       {choices.map((choice) => (
         <Button
           key={choice}
