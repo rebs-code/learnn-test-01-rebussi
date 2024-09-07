@@ -159,6 +159,9 @@ Il progetto è stato progettato pensando all'estensibilità. In particolare, è 
 ##### Installazione
 
 1- Clonare la repo da GitHub
+
 2- `npm install`
+
 3- `npm run dev`
+
 4- Il progetto utilizza il server host di default di Vite: localhost:5173
