@@ -63,9 +63,9 @@ export default function GameArena() {
 
   // relazioni tra le mosse
   const moveRelationships = {
-    rock: { beats: ["scissors", "lizard"] },
-    paper: { beats: ["rock", "spock"] },
-    scissors: { beats: ["paper", "lizard"] },
+    rock: { beats: ["scissors"] },
+    paper: { beats: ["rock"] },
+    scissors: { beats: ["paper"] },
   };
 
   // funzione che determina il vincitore
@@ -100,7 +100,7 @@ export default function GameArena() {
   };
 
   return (
-    <main className="container mx-auto px-4 py-8">
+    <main className="container px-4 py-8 mx-auto">
       <GameModeSelector
         currentMode={gameMode}
         onSelectMode={handleModeSelect}
@@ -134,7 +134,7 @@ export default function GameArena() {
           {gameEnded ? "Play Again" : "Start Game"}
         </Button>
       </div>
-      {result && <p className="text-center mt-4 text-xl font-bold">{result}</p>}
+      {result && <p className="mt-4 text-xl font-bold text-center">{result}</p>}
     </main>
   );
 }

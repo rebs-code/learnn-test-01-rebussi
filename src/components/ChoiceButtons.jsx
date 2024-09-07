@@ -25,13 +25,13 @@ export default function ChoiceButtons({
   }
 
   return (
-    <div className="flex justify-center gap-4 my-4">
+    <div className="flex gap-4 justify-center my-4">
       {choices.map((choice) => (
         <Button
           key={choice}
           onClick={() => onChoice(choice)}
           disabled={disabled}
-          color="blue"
+          color="teal"
         >
           {choice}
         </Button>
