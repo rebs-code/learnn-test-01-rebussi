@@ -94,7 +94,9 @@ La soluzione presentata tiene conto delle caretteristiche principale di un MVP p
 - L'intera tavola di gioco e' presentata all'utente fin da subito cosi che appaiono evidenti le feature e le caratteristiche.
 - Il design viene rispettato come leggero, miminale, e chiaro. Questo per evitare di aggiungere features indesiderate e permettere all'utente di concentrarsi sulle funzionalita' del prodotto finale
 
-![alt text](image.png)
+<p align="center">
+  <img src="/src/assets/screenshot.png" alt="Game interface">
+</p>
 
 #### Utilizzo
 
