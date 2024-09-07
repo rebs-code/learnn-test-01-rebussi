@@ -5,6 +5,7 @@ export default function GameStatusMessage({
   player1Choice,
   player2Choice,
 }) {
+  // funzione per ottenere il messaggio in base allo stato del gioco
   const getMessage = () => {
     if (gameMode === "humanVsHuman") {
       if (!player1Choice) return "Player 1 - Choose your move";

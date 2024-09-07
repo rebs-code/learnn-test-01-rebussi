@@ -16,7 +16,7 @@ export default function GameArena() {
   const [player1Choice, setPlayer1Choice] = useState(null);
   const [player2Choice, setPlayer2Choice] = useState(null);
   const [pcChoiceGenerated, setPcChoiceGenerated] = useState(false);
-  const [currentPlayer, setCurrentPlayer] = useState(1); //inizialmente player01 è il giocatore che comincia, in human vs pc human è sempre player01
+  const [currentPlayer, setCurrentPlayer] = useState(1); //inizialmente player01 è il giocatore che comincia, in human vs pc, human è sempre player01
   const [result, setResult] = useState("");
   const [gameEnded, setGameEnded] = useState(false);
 
@@ -29,12 +29,14 @@ export default function GameArena() {
 
   //funzione che gestisce la scelta del giocatore
   const handleChoice = (choice) => {
+    //se la modalità di gioco è PC vs PC, si generano con un solo click le scelte per entrambi i giocatori
     if (gameMode === "PCvsPC") {
       const pc1Choice = generatePCChoice();
       const pc2Choice = generatePCChoice();
       setPlayer1Choice(pc1Choice);
       setPlayer2Choice(pc2Choice);
       setPcChoiceGenerated(true);
+      //se la modalità di gioco è human vs PC, si assegna la scelta del giocatore e si genera la scelta del PC
     } else if (gameMode === "humanVsPC") {
       if (!player1Choice) {
         setPlayer1Choice(choice);
@@ -43,6 +45,7 @@ export default function GameArena() {
         setPcChoiceGenerated(true);
       }
     } else if (gameMode === "humanVsHuman") {
+      //se la modalità di gioco è human vs human, si assegna la scelta del giocatore e si cambia il giocatore per ripetere il processo
       if (currentPlayer === 1) {
         setPlayer1Choice(choice);
         setCurrentPlayer(2);
