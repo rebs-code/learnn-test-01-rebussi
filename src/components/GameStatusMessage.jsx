@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-unused-vars
+import React from "react";
 import PropTypes from "prop-types";
 
 export default function GameStatusMessage({
@@ -12,7 +14,7 @@ export default function GameStatusMessage({
       if (!player2Choice) return "Player 2 - Choose your move";
     } else if (gameMode === "humanVsPC") {
       if (!player1Choice) return "Player 1 - Choose your move";
-      if (!player2Choice) return "Click Generate to get PC's choice";
+      if (!player2Choice) return "Click Generate PC Choice";
     } else if (gameMode === "PCvsPC") {
       if (!player1Choice || !player2Choice)
         return "Click Generate PC Choices to start";

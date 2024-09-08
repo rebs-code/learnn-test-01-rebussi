@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-unused-vars
+import React from "react";
 import PropTypes from "prop-types";
 
 export default function GameModeSelector({ currentMode, onSelectMode }) {
@@ -7,8 +9,8 @@ export default function GameModeSelector({ currentMode, onSelectMode }) {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto bg-slate-800 p-6 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-4 text-slate-200 text-center">
+    <div className="p-6 mx-auto w-full max-w-md rounded-lg shadow-lg bg-slate-800">
+      <h2 className="mb-4 text-2xl font-bold text-center text-slate-200">
         Select Game Mode
       </h2>
       <div className="space-y-4">

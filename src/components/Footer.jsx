@@ -1,3 +1,6 @@
+// eslint-disable-next-line no-unused-vars
+import React from "react";
+
 export default function Footer() {
   return (
     <footer className="py-4 w-full bg-slate-900 text-slate-300">

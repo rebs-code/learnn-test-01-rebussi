@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-unused-vars
+import React from "react";
 import PropTypes from "prop-types";
 
 export default function PlayerChoiceDisplay({
@@ -16,20 +18,20 @@ export default function PlayerChoiceDisplay({
   };
 
   return (
-    <div className="flex flex-col md:flex-row justify-center items-center gap-4 my-8">
-      <div className="bg-slate-800 p-6 rounded-lg text-center w-full md:w-48">
-        <h2 className="text-xl font-bold mb-4 text-slate-200">
+    <div className="flex flex-col gap-4 justify-center items-center my-8 md:flex-row">
+      <div className="p-6 w-full text-center rounded-lg bg-slate-800 md:w-48">
+        <h2 className="mb-4 text-xl font-bold text-slate-200">
           {getPlayerName(1)}
         </h2>
-        <p className="text-4xl text-slate-100 capitalize">
+        <p className="text-4xl capitalize text-slate-100">
           {player1Choice || "?"}
         </p>
       </div>
-      <div className="bg-slate-800 p-6 rounded-lg text-center w-full md:w-48">
-        <h2 className="text-xl font-bold mb-4 text-slate-200">
+      <div className="p-6 w-full text-center rounded-lg bg-slate-800 md:w-48">
+        <h2 className="mb-4 text-xl font-bold text-slate-200">
           {getPlayerName(2)}
         </h2>
-        <p className="text-4xl text-slate-100 capitalize">
+        <p className="text-4xl capitalize text-slate-100">
           {player2Choice || "?"}
         </p>
       </div>
