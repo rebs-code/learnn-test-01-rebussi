@@ -136,9 +136,12 @@ Come dice il nome, avvia la partita. E' disattivato fino a quando entrambi i gio
 
 #### Tecnologie Utilizzate
 
-- Vite ^5.4.1
+- Vite
 - React 18
-- Tailwind ^3.4.10
+- Tailwind
+- Vitest
+- testing-library/react
+- testing-library/jest-dom
 
 #### Estensibilita'
 
@@ -158,6 +161,25 @@ Il progetto è stato progettato pensando all'estensibilità. In particolare, è 
     if (moveRelationships[move1].beats.includes(move2)) return "move1";
     return "move2";
   };
+```
+
+#### Testing
+
+Il progetto include una suite di test. Ho utilizzato le seguenti tecnologie per il testing:
+
+- **Vitest**: Framework di testing veloce e leggero, compatibile con Vite.
+- **React Testing Library**: Libreria per testare i componenti React.
+- **jsdom**: Ambiente DOM simulato per eseguire i test senza un browser reale.
+
+Il testing include:
+
+1. **Unit Testing**: Ogni componente React è testato individualmente per verificare il corretto rendering, la gestione degli stati e le interazioni dell'utente.
+2. **Integration Testing**: Verifichiamo l'interazione tra componenti diversi all'interno dell'applicazione e simuliamo una partita in GameFlow.test.jsx
+
+Per eseguire i test, utilizzare il comando:
+
+```
+npm run test:ui
 ```
 
 #### Installazione
